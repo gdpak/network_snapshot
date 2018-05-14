@@ -3,9 +3,5 @@
 
 - name: Do pre-setup on network devices
   include: setup_copy_ios.yml 
-  tags: setup copy
-  when: ansible_network_os == 'ios'
-
-- name: copy running config
-  include: copy_run_ios.yml 
+  tags: install_base
   when: ansible_network_os == 'ios'

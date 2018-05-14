@@ -1,0 +1,18 @@
+---
+# Enable config on ios router to copy runing-configurations
+#
+
+- name: generate the uuid
+  set_fact:
+    ansible_uuid : "{{ ansible_date_time.iso8601_micro }}" 
+
+- name: print the uuid
+  debug : 
+     msg : "{{ ansible_uuid }}"
+
+- name: copy running config to flash
+  ios_command:
+    commands:
+        - command : 'copy running-config flash0:ansible.cfg'
+          prompt : 'Destination filename [ansible.cfg]?'
+          answer : 'ansible.cfg'

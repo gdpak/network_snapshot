@@ -1,7 +1,23 @@
-Role Name
+Network_snapshot Ansible Galaxy Role
 =========
 
-A brief description of the role goes here.
+When something in a network goes catastrophically wrong, operators count on having a fall-back position: 
+the ability to automatically go back to configure the last known good state. In SDN/VNF case, last good
+state of network is always changing. This role takes snapshot of 'grouped'* network elements defined in 
+ansible-inventory with following meta-data in a timeseries data-model
+
+- running-configuration
+- versions of main OS and active packages
+- states - interfaces/protocol/user-defined states
+
+This snapshot gives operator ability to 
+1) Diffs of configuration or meta-data for last 'x' backups
+2) Diffs of operations states for corresponding backups
+
+'grouped' network elements are collection of network devices identified in fault group where a change
+in one device configuration can affect others e.g peering edge routers, routers in an ospf area.
+When a problem is detected in one of the elements then config can be rolled back to last good state
+of the group. 
 
 Requirements
 ------------

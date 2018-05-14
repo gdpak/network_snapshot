@@ -1,0 +1,12 @@
+---
+# Enable config on ios router to copy runing-configurations
+#
+
+- tasks:
+  - name: setup
+    ios_config:
+      lines:
+       - ip ssh version 2
+       - ip scp server enable
+       - username {{ ansible_ssh_user }} privilege 15
+      match: none
