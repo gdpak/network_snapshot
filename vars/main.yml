@@ -1,2 +1,4 @@
 ---
 # vars file for roles/network_snapshot
+
+ansible_uuid : {{ ansible_date_time.iso8601_micro }} 
