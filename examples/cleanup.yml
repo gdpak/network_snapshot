@@ -1,15 +1,11 @@
 ---
-# Delete the configuration file stored on media for storage hygenie
+# Delete the configuration file stored on media for storage hygiene
 #
-
-- name: print the uuid
-  debug : 
-     msg : "{{ ansible_uuid }}"
 
 - name: Clear the config file (eos)
   eos_command:
     commands:
-        command: 'delete flash:ansible.{{ ansible_uuid }}.cfg'
+       - command: 'delete flash:ansible.{{ ansible_uuid }}.cfg'
   when: ansible_network_os == 'eos'
 
 - name: Clear the config file (ios)
@@ -17,7 +13,6 @@
     commands:
         - command : 'delete ansible.{{ ansible_uuid }}.cfg'
           prompt : 'Delete filename [ansible.{{ ansible_uuid }}.cfg]?'
-#answer : 'ansible.{{ ansible_uuid }}.cfg'
           answer: "\r\n"
   when: ansible_network_os == 'ios'
 

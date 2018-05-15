@@ -2,10 +2,6 @@
 # copy runing-configurations to media on device
 #
 
-- name: print the uuid
-  debug : 
-     msg : "{{ ansible_uuid }}"
-
 - name: copy running config to flash (ios)
   ios_command:
     commands:

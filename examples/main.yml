@@ -1,6 +1,6 @@
 ---
 
-- hosts: ios02 eos02
+- hosts: ios01 ios02 eos02
   
   tasks:
      - include_vars: 'main.yml' 

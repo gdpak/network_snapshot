@@ -3,6 +3,7 @@ eos02 ansible_host=eos02.example.net
 
 [ios]
 ios02 ansible_host=ios02.example.net
+ios01 ansible_host=ios01.example.net
 
 [vyos]
 an-vyos-02.ansible.eng.rdu2.redhat.com 

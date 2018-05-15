@@ -2,10 +2,6 @@
 # Get the device configuration on Ansible Controller
 #
 
-- name: print the uuid
-  debug : 
-     msg : "{{ ansible_uuid }}"
-
 - name: get the file from device with relative destination
   network_get:
     src:  'ansible.{{ ansible_uuid }}.cfg'
