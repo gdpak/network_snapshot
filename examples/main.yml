@@ -1,7 +1,10 @@
 ---
-# tasks/main.yml: Main tasks 
 
-- name: Do pre-setup on network devices
-  include: setup_copy_ios.yml 
-  tags: install_base
-  when: ansible_network_os == 'ios'
+- hosts: ios02 eos02
+  
+  tasks:
+     - include_vars: 'main.yml' 
+     - include_tasks: setup_copy.yml
+     - include_tasks: copy_run.yml
+     - include_tasks: network_get.yml
+     - include_tasks: cleanup.yml

@@ -1,8 +1,7 @@
 ---
-# Enable config on ios router to copy runing-configurations
+# Enable config on network device to enable scp/sftp for copying runing-configurations
 #
 
-- tasks:
   - name: setup
     ios_config:
       lines:
@@ -10,3 +9,4 @@
        - ip scp server enable
        - username {{ ansible_ssh_user }} privilege 15
       match: none
+    when: ansible_network_os == 'ios'

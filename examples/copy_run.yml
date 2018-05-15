@@ -1,0 +1,21 @@
+---
+# copy runing-configurations to media on device
+#
+
+- name: print the uuid
+  debug : 
+     msg : "{{ ansible_uuid }}"
+
+- name: copy running config to flash (ios)
+  ios_command:
+    commands:
+        - command : 'copy running-config flash0:ansible.{{ ansible_uuid }}.cfg'
+          prompt : 'Destination filename [ansible.{{ ansible_uuid }}.cfg]?'
+          answer : 'ansible.{{ ansible_uuid }}.cfg'
+  when: ansible_network_os == 'ios'
+
+- name: copy running config to flash (eos)
+  eos_command:
+    commands:
+        - command: 'copy running-config flash:ansible.{{ ansible_uuid }}.cfg'
+  when: ansible_network_os == 'eos'

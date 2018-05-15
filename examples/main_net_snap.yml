@@ -1,5 +1,7 @@
 ---
 
 - hosts: ios02
+  
   tasks:
+     - include_vars: 'main.yml' 
      - include_tasks: copy_run_ios.yml

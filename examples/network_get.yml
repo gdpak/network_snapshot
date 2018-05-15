@@ -1,0 +1,14 @@
+---
+# Get the device configuration on Ansible Controller
+#
+
+- name: print the uuid
+  debug : 
+     msg : "{{ ansible_uuid }}"
+
+- name: get the file from device with relative destination
+  network_get:
+    src:  'ansible.{{ ansible_uuid }}.cfg'
+    dest: 'backup/ansible_{{ ansible_host }}_{{ ansible_date_time.iso8601_micro }}.cfg'
+  register: result
+
